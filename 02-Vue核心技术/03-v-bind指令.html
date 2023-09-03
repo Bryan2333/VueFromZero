@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-bind指令</title>
+    <script src="../00-js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- msg是变量名 -->
+        <span v-bind:xyz="msg"></span>
+
+        <!-- 这个msg带有单引号，不是变量，而是常量 -->
+        <span v-bind:xyz="'msg'"></span>
+
+        <!-- v-bind实际用例 -->
+        <img src="../images/1.jpg" alt="no image">
+        <img v-bind:src="imgPath" alt="no image">
+
+        <!-- v-bind简写 -->
+        <span :test="1111"></span>
+    </div>
+    <!-- 
+    1. v-bind是一个负责动态绑定的指令
+        它可以让HTML的某个属性的值产生动态变化的效果
+
+    2. v-bind语法格式
+        <HTML标签 v-bind:参数="表达式"></HTML标签>
+
+    3. v-bind指令的编译原理
+        编译前:
+            <HTML标签 v-bind:参数="表达式"></HTML标签>
+        编译后:
+            <HTML标签 参数="表达式的执行结果"></HTML标签>
+
+        注意:
+            1. 在编译后，v-bind后面的参数会变成标签的属性
+            2. 表达式会关联data，当data发生变化，表达式的值也会发生变化
+
+    4. v-bind的简写
+        因为v-bind在实际开发中使用频繁，所有可以简写为 <HTML标签 :属性="表达式"></HTML标签>
+
+    5. 标签体中内的内容需要动态变化时，使用插值语法。标签的属性值需要动态变化，使用v-bind指令
+-->
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                msg: 'Hello, Vue',
+                imgPath: '../images/1.jpg'
+            }
+        })
+    </script>
+</body>
+
+</html>

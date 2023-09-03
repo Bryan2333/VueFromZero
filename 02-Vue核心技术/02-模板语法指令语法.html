@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模板语法指令语法 v-??</title>
+    <script src="../00-js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        指令语法
+
+        1. 指令的作用：当表达式的值改变时，将其产生的连带影响，作用到对于的DOM
+
+        2. Vue框架中的所有指令都以 v- 开头
+
+        3. Vue框架的指令写在标签的属性位置 <div v-??></div>，需要被Vue编译器编译后才能被浏览器解析
+
+        4. 指令语法格式
+
+            <HTML标签 v-指令名:参数="表达式">{{插值语法}}</HTML标签>
+
+            表达式：插值语法中{{}}可以写什么，指令中的表达式就可以写什么
+
+            不是所有的指令都需要参数和表达式
+
+        5. v-once指令：只渲染元素一次，随后的重新渲染，元素和其所有的子节点被视为静态内容并跳过，
+                      有助于提高性能
+
+        6. v-if="表达式"： 表达式的执行结果需要是布尔类型(true或false)
+                          true:  指令所在的标签会被渲染到浏览器当中
+                          false: 指令所在的标签不会被渲染到浏览器当中
+
+     -->
+    <div id="app">
+        <h1>{{msg}}</h1>
+        <!-- 只会被渲染一次 -->
+        <h1 v-once>{{msg}}</h1>
+        <!-- 会被渲染到浏览器 -->
+        <h1 v-if="b > a">{{msg}}</h1>
+        <!-- 不会被渲染到浏览器 -->
+        <h1 v-if="b < a">{{msg}}</h1>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                msg: 'Hello, Vue',
+                a: 10,
+                b: 20
+            }
+        })
+    </script>
+</body>
+
+</html>

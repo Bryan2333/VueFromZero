@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模板语句的数据源</title>
+    <script src="../00-js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 指定挂载位置 -->
+    <div id="app"></div>
+    <script>
+        /* 
+            模板语句的数据来源
+
+            1. data选项负责给模板语句提供数据来源
+
+            2. data选项的类型可以是对象或函数 Object | Function
+
+            3. data配置项的专业叫法是 Vue实例的数据对象 (给整个Vue实例提供数据来源)
+
+            4. 对象必须是纯粹的对象{} ，含有0个或多个的key:value对
+
+            5. data数据通过 {{}} 符号插入到模板语句中
+        */
+        let options = {
+            template: `<h1>电视剧{{name}}的上映时间是{{releaseTime}}。主角是{{lead.name}}，年龄{{lead.age}}岁。
+                        其他演员包括{{actor[0].name}}({{actor[0].age}}岁)，{{actor[1].name}}({{actor[1].age}}岁)
+                </h1>`,
+            data: {
+                name: '狂飙',
+                releaseTime: '2023-01-01',
+                lead: {
+                    name: '高启强',
+                    age: 40
+                },
+                actor: [
+                    {
+                        name: '安欣',
+                        age: 41,
+                    },
+                    {
+                        name: '高启兰',
+                        age: 30
+                    }
+                ]
+            }
+        }
+        const myVue = new Vue(options);
+        myVue.$mount('#app')
+    </script>
+</body>
+
+</html>

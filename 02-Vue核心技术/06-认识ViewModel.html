@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>认识ViewModel</title>
+    <script src="../00-js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{msg}}</h1>
+    </div>
+    <!-- 
+        Vue实例中有很多属性，有$开头的属性，也有下划线开头的属性
+
+        一般认为$开头的属性是公开属性，而下划线开头的属性是私有属性
+
+    -->
+    <script>
+        let dataObj = {
+            msg: 'Hello, Vue'
+        }
+        const vm = new Vue({
+            el: '#app',
+            data: dataObj
+        })
+
+        console.log(dataObj.msg)
+        // Vue框架底层使用了数据代理机制
+        console.log(vm.msg)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVVM分层思想</title>
+    <script src="../00-js/vue.js"></script>
+</head>
+
+<body>
+    <!--
+        1. MVVM
+
+            M: Model(模型/数据)
+
+            V: View(视图)
+
+            VM: ViewModel(视图模型) VM是MVVM的核心
+        
+        2. MVVM模型中倡导Model和View分离
+
+            原因：如果Model和View不分离的话，假如数据发生任意变化，
+                 开发者需要编写大量的操作DOM的JS代码
+
+            Model和View后，出现了ViewModel核心，这个核心把这些操作给包揽了
+    -->
+    <!-- View V -->
+    <div id="app">
+        姓名: <input type="text" v-model="name">
+    </div>
+    <script>
+        // ViewModel VM
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                // Model M
+                name: '张三'
+            }
+        })
+    </script>
+</body>
+
+</html>

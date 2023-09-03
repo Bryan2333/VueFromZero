@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue实例和容器的关系</title>
+    <script src="../00-js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 准备容器 -->
+    <div class="app">{{msg}}</div>
+    <div id="app2">{{msg}}</div>
+    <!-- <div class="app">{{msg}}</div>  -->
+    <script>
+        /* 
+            一个Vue实例只能匹配一个容器，反之亦然
+        */
+        const myVue = new Vue({
+            el: '.app',
+            data: {
+                msg: 'Hello, Vue'
+            }
+        })
+
+        const myVue2 = new Vue({
+            el: '#app2',
+            data: {
+                msg: 'Hello, Vue2'
+            }
+        })
+
+        const myVue3 = new Vue({
+            el: '#app2',
+            data: {
+                msg: 'Hello, Vue3'
+            }
+        })
+    </script>
+</body>
+
+</html>

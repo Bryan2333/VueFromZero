@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一Vue程序</title>
+    <!-- 安装Vue -->
+    <!-- 上下文中注册了一全局变量Vue -->
+    <script src="../00-js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 指定Vue实例的挂载位置 -->
+    <div id="app"></div>
+    <script>
+        /* 
+            第一步：创建Vue实例
+
+            1.  直接调用Vue函数，不创建实例会报错
+            
+            2.  Vue构造函数的参数options，options：多个选项
+                Vue构造函数要去options选项是一个纯粹的JS对象：{}
+
+                一个{}可以编写大量的key:value对
+                一个key:value对是一配置项
+                我们主要通过这个options参数来给Vue实例指定多个配置项
+
+            3.  template配置项用于指定模板语句，模板语句是一个字符串
+                模板语句
+                1. 模板语句是是Vue框架的一套语法规则
+                2. 模板语句可以是一个纯粹的HTML代码，可以是Vue中的特殊符号，也可以是两者的结合
+                3. template后面的语句会被Vue的编译器编译，转换成浏览器能够解析的HTML代码
+        */
+        let options = {
+            template: '<h1>Hello, Vue</h1>',
+        }
+        const myVue = new Vue(options)
+        /* 
+            第二步
+
+            每个Vue实例都有一个$mount方法，将Vue实例挂载到指定的位置
+        */
+        myVue.$mount('#app')
+        // myVue.$mount(document.getElementById('app'))
+    </script>
+</body>
+
+</html>

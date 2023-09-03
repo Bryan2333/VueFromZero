@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue数据代理对属性名的要修</title>
+    <script src="../00-js/vue.js"></script>
+</head>
+
+<body>
+    <!--
+        1. Vue实例不会给以下划线或$开头的属性名做数据代理
+
+        2. 如果允许给下划线或$开始的属性名做数据代理，
+           Vue实例上可能会出现_xxx或$xxx的属性，而这个属性名有可能和Vue框架自身的属性名冲突
+    -->
+    <div id="app">
+        <h1>{{msg}}</h1>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'Hello, Vue',
+                _name: '张三',
+                $age: 19
+            }
+        })
+    </script>
+</body>
+
+</html>

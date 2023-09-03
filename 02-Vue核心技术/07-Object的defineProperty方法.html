@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object的DefineProperty方法</title>
+</head>
+
+<body>
+    <!-- 
+        Object.defineProperty方法
+
+        1. 这个方法的作用是：给对象新增属性，或者修改对象原有的属性
+
+        2. 用法
+            Object.defineProperty(目标对象, 新增属性的名称, {该新增属性的配置项})
+
+        3. 配置项
+            value: 给属性赋值
+            writable: 该属性是否可以被修改
+            get方法: 不需要开发者手动调用。当读取属性值时，get方法被自动调用 
+                get方法的返回值代表该属性的值
+
+            set方法: 不需要开发者手动调用。当修改属性值时，set方法被自动调用
+
+            注意：当配置项中有get方法和set方法时，value和writable配置项不能存在
+
+    -->
+    <script>
+        // 临时变量
+        let tmp
+        // 不同的对象
+        let phone = {}
+        // 给phone对象添加color属性
+        Object.defineProperty(phone, 'color', {
+            // value: '银色',
+            // writable: true,
+            // getter方法配置项
+            get: function () {
+                console.log('getter方法被调用了')
+                return tmp
+            },
+            // setter方法配置项
+            set: function (val) {
+                console.log('setter方法被调用了', val)
+                tmp = val
+            }
+        })
+
+        console.log(phone.color)
+    </script>
+</body>
+
+</html>

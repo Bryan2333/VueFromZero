@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手写Vue数据代理框架</title>
+    <!-- 安装我们的Vue -->
+    <script src="../00-js/myVue.js"></script>
+    <!-- 安装Vue框架 -->
+    <!-- <script src="../00-js/vue.js"></script> -->
+</head>
+
+<body>
+    <!-- 容器 -->
+    <!-- <div id="app">
+        <h1>{{msg}}</h1>
+    </div> -->
+    <script>
+        // const vm = new Vue({
+        //     el: '#app',
+        //     data: {
+        //         msg: 'Hello, Vue'
+        //     }
+        // })
+        const vm = new Vue({
+            data: {
+                msg: 'Hello, Vue',
+                _name: '张三',
+                $age: 28
+            }
+        })
+    </script>
+</body>
+
+</html>

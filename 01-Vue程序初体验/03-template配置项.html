@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>template配置项</title>
+    <script src="../00-js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <h1>{{msg}}</h1>
+            <h1>{{name}}</h1>
+        </div>
+    </div>
+    <script>
+        // Vue全局配置对象
+        Vue.config.productionTip = false
+        /* 
+            1. template后面指定模板语句，其中只能有一个根节点
+
+            2. 只要data中的数据发生变化，模板语句一定会被重新编译
+
+            3. 如果使用template配置项的话，指定挂载位置的元素可以被替换
+
+            4. 我们可以不使用template来写模板语句，模板语句可以直接写道HTML标签中
+
+            5. 如果模板语句直接写道HTML标签中，则挂载位置不会被替换
+
+            6. 可以使用el配置项来代替$mount，达到同样的效果。el配置的作用：告诉Vue实例接管哪一个容器
+        */
+        let options = {
+            // template: `
+            // <div>
+            //        <h1>{{msg}}</h1>
+            //        <h1>{{name}}</h1>
+            // </div>
+            // `,
+            data: {
+                msg: 'Hello, Vue',
+                name: '测试Bryan'
+            },
+            el: '#app'
+        }
+        const myVue = new Vue(options)
+        // myVue.$mount('#app')
+    </script>
+</body>
+
+</html>

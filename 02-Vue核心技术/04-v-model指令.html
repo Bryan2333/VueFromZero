@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-model指令</title>
+    <script src="../00-js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        1. v-model和v-bind区别
+
+        这两个指令都可以完成数据绑定
+
+        v-bind是单项数据绑定，而v-model是双向数据绑定
+
+        v-bind:  v-bind  =====> 视图
+        v-model: v-model <=====> 视图
+
+        2. v-bind可以使用在任何HTML标签中，而v-model只能使用在表单类元素上
+
+        3. 简写形式
+
+            v-bind: <HTML标签 :参数="表达式"></HTML标签>
+            
+            v-model: <HTML标签 v-model="表达式"></HTML标签>
+
+    -->
+    <div id="app">
+        v-bind指令: <input type="text" name="text1" v-bind:value="name1"> <br>
+        v-model指令: <input type="text" name="text2" v-model:value="name2"> <br>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                name1: '张三',
+                name2: '李四'
+            }
+        })
+    </script>
+</body>
+
+</html>

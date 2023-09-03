@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>读Vue源码</title>
+    <script src="../00-js/vue.js"></script>
+</head>
+
+<body>
+    <!--
+        Vue框架中关键代码
+
+        1. var data = vm.$options.data;
+            1. 获取Data
+
+        2. data = vm._data = isFunction(data) ? getData(data, vm) : data || {};
+            1. 程序执行完这一行，vm对象会多出一个_data属性
+            2. data不一定是对象，可以是一个函数
+               如果data是函数，则调用getData(data, vm)来获取data
+               如果data不是函数，则直接将data返回给data变量，同时赋值给vm._data属性
+            3. _data以下划线开头，说明它是Vue框架的属性，
+            4. vm._data直接指向了底层真实的data对象，通过_data访问属性是不会走数据代理机制的
+
+        3. 
+        function isReserved(str) {
+            var c = (str + ' ').charCodeAt(0);
+            return c === 0x24 || c === 0x5f
+        }
+        该函数用来判断字符串是否以$或_开头
+
+        4. proxy(vm, "_data", key)
+           通过这行代码直接进入代理机制(数据代理)
+
+        5. 
+        target是vm, sourceKey是_data，key是"age"
+        function proxy(target, sourceKey, key) {
+               sharedPropertyDefinition.get = function proxyGetter() {
+               return this[sourceKey][key];
+            };
+               sharedPropertyDefinition.set = function proxySetter(val) {
+                   this[sourceKey][key] = val;
+            };
+            Object.defineProperty(target, key, sharedPropertyDefinition);
+        } 
+
+        6. 如果开发者不想通过代理机制访问属性，可以使用$data这个属性访问
+    -->
+    <div id="app">
+        <h1>{{msg}}</h1>
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'Hello',
+                age: 20
+            }
+        })
+        console.log(vm.$data.msg)
+    </script>
+</body>
+
+</html>
