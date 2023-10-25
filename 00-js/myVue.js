@@ -19,4 +19,11 @@ class Vue {
                 })
             }
         })
+        // 获取所有方法
+        Object.keys(options.methods).forEach((methodName, index) => {
+            // console.log(methodName)
+            // 给当前的Vue实例拓展一个方法
+            this[methodName] = options.methods[methodName]
+        })
     }
+}
