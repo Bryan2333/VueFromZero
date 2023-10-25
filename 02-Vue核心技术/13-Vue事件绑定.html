@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件绑定</title>
+    <script src="../00-js/vue.js"></script>
+</head>
+
+<body>
+    <!-- Vue事件处理
+        1. 指令语法
+            <HTML标签 v-指令么:参数="表达式">{{插值语法}}</HTML标签>
+
+        2. Vue中完成事件绑定需要使用v-on指令
+            v-on:事件名="表达式"
+
+            例如：
+                v-on:click="表达式" 表示发生鼠标点击事件后，执行表达式
+                v-on:keydown="表达式" 表示发生键盘按下事件后，执行表达式
+        
+        3. 在Vue当中，所有事件关联的回调函数需要在Vue实例的配置项methods中配置 
+
+        4. v-on事件简写法
+
+            v-on:click 等价于 @click
+            v-on:keydown 等价于 @keydown
+
+        5. 如果事件绑定的回调函数不需要任何参数，可以将函数的括号省略
+
+        6. Vue在调用回调函数时，会自动给回调函数传递一个参数，这个参数是当前发生的事件对象
+
+        7. 可以在回调函数的()中使用占位符$event，明确声明传递事件对象给回调函数
+    -->
+    <div id="app">
+        <h1>{{msg}}</h1>
+        <!-- 使用JavaScript完成事件绑定 -->
+        <button onclick="alert('hello')">hello</button> <br>
+        <!-- 使用Vue来完成事件绑定 -->
+        <!-- 以下是错误代码，因为alert()并没有被Vue实例接管 -->
+        <!-- <button v-on:click="hello">hello</button> -->
+        <button v-on:click="sayhello()">hello</button> <br>
+        <!-- v-on的简写形式 @事件名 -->
+        <button @click="sayhi()">hi</button> <br>
+        <!-- 回调函数无参数，可以省略括号 -->
+        <button v-on:click="sayyes">yes</button>
+    </div>
+    <script>
+        // 自定义函数也不可以
+        // function sayhello() {
+        //     alert('hello')
+        // }
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'Hello, Vue',
+            },
+            methods: {
+                // 在methods配置项中，定义需要用的回调函数
+                sayhello: function () {
+                    alert('hello2')
+                },
+                sayhi: function () {
+                    alert('hi')
+                },
+                sayyes: function (event) {
+                    console.log(event)
+                    console.log(event.target)
+                    alert('yes')
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

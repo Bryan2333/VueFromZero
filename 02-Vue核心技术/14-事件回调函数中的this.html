@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件回调函数中的this</title>
+    <script src="../00-js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{msg}}</h1>
+        <h1>计数器: {{counter}}</h1>
+        <!-- <button @click="counter++">点击我+1</button> -->
+        <button @click="add">点击我+1</button>
+        <!-- <button @click="add2">点击我+1 add2</button> -->
+    </div>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'Hello, Vue',
+                counter: 0
+            },
+            // 1. methods对象中的方法可以通过vm去访问
+            // 2. methods对象中的方法没有做数据代理
+            methods: {
+                add() {
+                    // counter++; 错误的
+                    // 事件回调函数中的this指向当前Vue实例
+                    // console.log(vm === this)
+                    this.counter++;
+                },
+                // add2: () => {
+                //     this.counter++;
+                // }
+                sayHi() {
+                    alert('hi')
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
